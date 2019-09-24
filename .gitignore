@@ -3,8 +3,8 @@
 
 dist/
 node_modules/
-public/css/*
-public/js/*
+#public/css/*
+#public/js/*
 
 *.log
 .env

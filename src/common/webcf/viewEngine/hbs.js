@@ -7,11 +7,14 @@ const customHelpers = {};
 const helpers = Object.assign(hbsHelpers(), customHelpers);
 
 export default viewsPath => {
-  return exphbs.create({
-    helpers,
-    extname: 'hbs',
-    layoutsDir: normalize(`${viewsPath}/_layouts`),
-    partialsDir: normalize(`${viewsPath}/_partials`),
-    defaultLayout: 'main',
-  }).engine;
+  return {
+    engineName: 'hbs',
+    engine: exphbs.create({
+      helpers,
+      extname: 'hbs',
+      layoutsDir: normalize(`${viewsPath}/_layouts`),
+      partialsDir: normalize(`${viewsPath}/_partials`),
+      defaultLayout: 'main',
+    }).engine,
+  };
 };
