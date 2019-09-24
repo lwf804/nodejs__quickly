@@ -1,0 +1,51 @@
+{
+  "name": "quickly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --inspect app --exec babel-node",
+    "js:build": "",
+    "js:watch": "",
+    "js:prod":  "",
+    "sass:build": "node-sass resources/sass/ -o public/css/",
+    "sass:watch": "nodemon -e scss -x \"npm run sass:build\"",
+    "sass:prod": "node-sass --output-style compressed resources/sass/ -o public/css/",
+    "compile": "babel app --out-dir dist  --delete-dir-on-start --source-maps inline --copy-files",
+    "start": "dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lwf804/nodejs__quickly.git"
+  },
+  "author": "lwf804@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lwf804/nodejs__quickly/issues"
+  },
+  "homepage": "https://github.com/lwf804/nodejs__quickly#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^9.2.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2",
+    "uglifyjs": "^2.4.11"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "handlebars-helpers": "^0.10.0"
+  }
+}

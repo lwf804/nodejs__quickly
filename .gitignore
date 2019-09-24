@@ -1,0 +1,12 @@
+.idea/*
+!.idea/codeStyles/
+
+dist/
+node_modules/
+public/css/*
+public/js/*
+
+*.log
+.env
+
+.DS_Store
