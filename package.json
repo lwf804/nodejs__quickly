@@ -8,7 +8,7 @@
     "dev": "nodemon --inspect app --exec babel-node",
     "js:build": "",
     "js:watch": "",
-    "js:prod":  "",
+    "js:prod": "",
     "sass:build": "node-sass resources/sass/ -o public/css/",
     "sass:watch": "nodemon -e scss -x \"npm run sass:build\"",
     "sass:prod": "node-sass --output-style compressed resources/sass/ -o public/css/",
