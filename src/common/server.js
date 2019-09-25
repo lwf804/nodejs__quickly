@@ -1,10 +1,12 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import compression from 'compression';
+import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import logger from '../common/logger';
 import { requestLimit } from '../config/app';
 import errorHandler from '../common/exceptions/handler';
+import i18n from './i18n';
 
 class Server {
   constructor(app = express()) {
@@ -25,11 +27,17 @@ class Server {
     // helmet security
     app.use(helmet());
 
+    // cookie parser
+    app.use(cookieParser());
+
     // parse application/x-www-form-urlencoded
     app.use(bodyParser.urlencoded({ extended: false, limit: requestLimit }));
 
     // parse application/json
     app.use(bodyParser.json({ limit: requestLimit }));
+
+    // add i18n
+    app.use(i18n);
 
     // request logger
     // app.use(morgan('combined', { stream: logger.stream }));

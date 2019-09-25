@@ -3,8 +3,8 @@ import { isProd } from '../../config/app';
 import { resJson } from '../../utils/request';
 import JsonResponse from '../components/JsonResponse';
 
-export default (error, res, req) => {
-  logger.error(error);
+export default (error, req, res) => {
+  logger.error(error.stack);
 
   // handle for kind of exception
 
@@ -14,7 +14,7 @@ export default (error, res, req) => {
 const lastHandle = (error, res, req) => {
   const err = {
     status: error.status || 500,
-    message: error.message || req.__('An error occurred'),
+    message: error.message || res.__('an_error_occurred'),
     ...(isProd ? {} : error),
   };
 
@@ -23,7 +23,8 @@ const lastHandle = (error, res, req) => {
     return res.status(resObj.statusCode).json(resObj.get(isProd));
   }
 
-  res.locals.error = err;
+  res.locals.message = err.message;
+  res.locals.error = error.stack;
 
   // render the error page
   res.status(err.status).render('errors/error');

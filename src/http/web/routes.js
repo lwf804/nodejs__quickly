@@ -6,7 +6,7 @@ const router = express.Router();
 export default router;
 
 router.get('/', (req, res) => {
-  res.send(`<span>Well come to <strong>${appName}<strong>!</span>`);
+  res.send(`<span>${res.__('well_come_to_')}<strong>${appName}<strong>!</span>`);
 });
 
 router.get('/login', login.show);
