@@ -1,5 +1,5 @@
 import passport from 'passport';
-import { User } from '../../../../models';
+import { User } from '@models';
 import local from './local';
 
 // serialize and deserialize sessions

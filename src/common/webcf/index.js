@@ -4,11 +4,11 @@ import methodOverride from 'method-override';
 import csrf from 'csurf';
 import session from 'express-session';
 import { ejs as getViewEngine } from './viewEngine';
-import webRoutes from '../../http/web/routes';
-import { projectPath, secretKey } from '../../config/app';
-import { getViewsPath } from '../../utils/path';
+import webRoutes from '@http/web/routes';
+import { projectPath, secretKey } from '@config/app';
+import { getViewsPath } from '@utils/path';
 import { errors, auth } from './middleware';
-import { sessionStore } from '../database';
+import { sessionStore } from '@common/database';
 
 const viewsPath = getViewsPath();
 const viewEngine = getViewEngine(viewsPath);

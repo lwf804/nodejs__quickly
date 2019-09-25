@@ -2,5 +2,18 @@
   "presets": [
     "@babel/preset-env"
   ],
-  "plugins": ["@babel/plugin-proposal-export-default-from"]
+  "plugins": [
+    "@babel/plugin-proposal-export-default-from",
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "@common": "./src/common",
+        "@config": "./src/config",
+        "@http": "./src/http",
+        "@models": "./src/models",
+        "@services": "./src/services",
+        "@utils": "./src/utils"
+      }
+    }]
+  ]
 }

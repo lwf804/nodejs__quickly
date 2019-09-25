@@ -1,6 +1,6 @@
 import logger from '../logger';
-import { isProd } from '../../config/app';
-import { resJson } from '../../utils/request';
+import { isProd } from '@config/app';
+import { resJson } from '@utils/request';
 import JsonResponse from '../components/JsonResponse';
 
 export default (error, req, res) => {

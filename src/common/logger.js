@@ -1,6 +1,6 @@
 import { createLogger, format, transports } from 'winston';
 import moment from 'moment';
-import { projectPath, isProd } from '../config/app';
+import { projectPath, isProd } from '@config/app';
 
 const MESSAGE = Symbol.for('message');
 

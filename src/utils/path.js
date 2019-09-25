@@ -1,5 +1,5 @@
 import { join, basename } from 'path';
-import { projectPath } from '../config/app';
+import { projectPath } from '@config/app';
 
 export const getPublicPath = (path = '') => join(projectPath, 'publicPath', path);
 

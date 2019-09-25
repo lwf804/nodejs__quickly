@@ -3,9 +3,9 @@ import bodyParser from 'body-parser';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
-import logger from '../common/logger';
-import { requestLimit } from '../config/app';
-import errorHandler from '../common/exceptions/handler';
+import logger from '@common/logger';
+import { requestLimit } from '@config/app';
+import errorHandler from '@common/exceptions/handler';
 import i18n from './i18n';
 import { connect } from './database';
 
