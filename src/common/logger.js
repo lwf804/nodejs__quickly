@@ -39,4 +39,21 @@ logger.stream = {
   },
 };
 
+const superError = logger.error;
+logger.error = error => {
+  switch (typeof error) {
+    case 'string':
+      return superError(error);
+
+    case 'object':
+      if (error instanceof Error) {
+        return superError(error.stack);
+      }
+      return superError(JSON.stringify(error));
+
+    default:
+      return;
+  }
+};
+
 export default logger;

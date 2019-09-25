@@ -7,14 +7,21 @@ import logger from '../common/logger';
 import { requestLimit } from '../config/app';
 import errorHandler from '../common/exceptions/handler';
 import i18n from './i18n';
+import { connect } from './database';
 
 class Server {
   constructor(app = express()) {
     this.app = app;
 
-    // compression
+    // connect db
+    connect()
+      .on('error', logger.error)
+      .on('disconnected', connect);
+
+    // compression (should be placed before express.static)
     app.use(
       compression({
+        threshold: 512,
         filter: (req, res) => {
           if (req.headers['x-no-compression']) {
             return false;
