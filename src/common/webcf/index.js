@@ -1,13 +1,12 @@
 import { static as expstatic } from 'express';
 import { normalize } from 'path';
 import methodOverride from 'method-override';
-import csrf from 'csurf';
 import session from 'express-session';
 import { ejs as getViewEngine } from './viewEngine';
 import webRoutes from '@http/web/routes';
 import { projectPath, secretKey } from '@config/app';
 import { getViewsPath } from '@utils/path';
-import { errors, auth } from './middleware';
+import { errors, auth, csrf } from './middleware';
 import { sessionStore } from '@common/database';
 
 const viewsPath = getViewsPath();
@@ -32,11 +31,7 @@ export default app => {
   app.use(auth);
 
   // config csrf
-  app.use(csrf());
-  app.use(function(req, res, next) {
-    res.locals.csrf_token = req.csrfToken();
-    next();
-  });
+  app.use(csrf);
 
   // config view
   app.engine(viewEngine.engineName, viewEngine.engine);
