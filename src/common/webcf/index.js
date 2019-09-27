@@ -6,7 +6,7 @@ import { ejs as getViewEngine } from './viewEngine';
 import webRoutes from '@http/web/routes';
 import { projectPath, secretKey } from '@config/app';
 import { getViewsPath } from '@utils/path';
-import { errors, auth, csrf } from './middleware';
+import { errors, auth, csrf, helpers, method } from './middleware';
 import { sessionStore } from '@common/database';
 
 const viewsPath = getViewsPath();
@@ -49,10 +49,14 @@ export default app => {
       }
     })
   );
+  app.use(method);
+
+  // middleware errors
+  app.use(errors);
+
+  // middleware helpers
+  app.use(helpers);
 
   // routes
   app.use(webRoutes);
-
-  // middleware (after route)
-  app.use(errors);
 };

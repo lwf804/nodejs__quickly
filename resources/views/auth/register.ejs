@@ -1,0 +1,47 @@
+<% layout('../_layouts/main') -%>
+<% stylesheet(asset('app.css')) -%>
+
+<div class="col-lg-4 offset-lg-4">
+    <div style="margin: 0 auto; max-width: 500px">
+        <div class="card">
+            <article class="card-body">
+                <h4 class="card-title text-center mb-4 mt-1"><%= __('register') %></h4>
+                <hr>
+                <form method="post">
+                    <%- csrf_input %>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                            </div>
+                            <input name="email" value="<%=user.email || ''%>" class="form-control <%=errors.has('email') ? 'is-invalid' : ''%>" placeholder="<%= __('email') %>" type="email">
+                            <%-errors.has('email') ? '<div class="invalid-feedback">' + escape(errors.first('email')) + '</div>' : ''%>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                            </div>
+                            <input name="password" class="form-control <%=errors.has('password') ? 'is-invalid' : ''%>" placeholder="<%= __('password') %>" type="password">
+                            <%-errors.has('password') ? '<div class="invalid-feedback">' + escape(errors.first('password')) + '</div>' : ''%>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                            </div>
+                            <input name="password_confirmed" class="form-control"
+                                   placeholder="<%= __('password_confirmed') %>" type="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"><%= __('register') %></button>
+                    </div> <!-- form-group// -->
+                    <p class="text-center"><a href="/login"><%= __('login') %></a></p>
+                </form>
+            </article>
+        </div>
+    </div>
+</div>
